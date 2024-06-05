@@ -18,6 +18,7 @@ pipeline {
                 }
             }
         }
+        stage('docker push') {
             steps{
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerpush') {            
@@ -25,7 +26,8 @@ pipeline {
                     //sh 'docker tag kushwaha1987/nodeapp kushwaha1987/nodeapp'
                     sh 'docker push kushwaha1987/nodeapp'          
                     // app.push("latest")        
-                }
+                    }
+               }
             }
         }
     }    
