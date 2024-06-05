@@ -32,7 +32,7 @@ pipeline {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerpush') {            
                     // app.push("${BUILD_NUMBER}")
-                    sh 'docker tag firstimage kushwaha1987/nodeapp'
+                    sh 'docker tag nodeapp kushwaha1987/nodeapp'
                     sh 'docker push kushwaha1987/nodeapp:latest'            
                     // app.push("latest")        
                     }
