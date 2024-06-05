@@ -28,16 +28,18 @@ pipeline {
         //         }
         //     }
         stage('Docker push') {
-            steps{
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerpush') {            
-                    // app.push("${BUILD_NUMBER}")
-                    sh 'docker tag kushwaha1987/nodeapp kushwaha1987/nodeapp'
-                    sh 'docker push kushwaha1987/nodeapp:latest'            
-                    // app.push("latest")        
-                    }
+            withDockerRegistry([ credentialsId: "dockerpush", url: "https://registry.hub.docker.com" ]) {
+                sh "kushwaha1987/nodeapp:latest"
                 }
-            }    
-        }   
-    }
+            // steps{
+            //     script {
+            //         docker.withRegistry('https://registry.hub.docker.com', 'dockerpush') {            
+            //         // app.push("${BUILD_NUMBER}")
+            //         //sh 'docker tag kushwaha1987/nodeapp kushwaha1987/nodeapp'
+            //         sh 'docker push kushwaha1987/nodeapp:latest'            
+            //         // app.push("latest")        
+            //         }
+            //     }
+        }    
+    }   
 }
