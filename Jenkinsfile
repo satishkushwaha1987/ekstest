@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        dockerimagename = "kushwaha1987/nodeapp"
+        dockerimagename = "kushwaha1987/nodeapps"
         dockerImage = "docker"
         APP_NAME = "eksapp"
     }
