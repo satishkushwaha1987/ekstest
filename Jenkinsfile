@@ -30,18 +30,12 @@ pipeline {
                 }
             }
         }
-        // stage('docker push') {
-        //     steps{
-        //         script {
-        //             docker.withRegistry('https://registry.hub.docker.com', 'dockerpush') {            
-        //                 dockerimage.push("${env.BUILD_NUMBER}")
-        //             // //sh 'docker tag kushwaha1987/nodeapp kushwaha1987/nodeapp'
-        //             // sh 'docker push kushwaha1987/nodeapp'          
-        //                 dockerimage.push("latest")        
-        //             }
-        //        }
-        //     }
-        // }
-    }    
-}
+        stage('Deploying app to k8s') {
+            steps {
+                sh 'kubectl apply -f deploymentservice.yml'
+            }
+        }
+    }
+}    
+
        
