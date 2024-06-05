@@ -22,10 +22,10 @@ pipeline {
             steps{
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerpush') {            
-                    // app.push("${BUILD_NUMBER}")
-                    //sh 'docker tag kushwaha1987/nodeapp kushwaha1987/nodeapp'
-                    sh 'docker push kushwaha1987/nodeapp'          
-                    // app.push("latest")        
+                        dockerimage.push("${env.BUILD_NUMBER}")
+                    // //sh 'docker tag kushwaha1987/nodeapp kushwaha1987/nodeapp'
+                    // sh 'docker push kushwaha1987/nodeapp'          
+                        dockerimage.push("latest")        
                     }
                }
             }
