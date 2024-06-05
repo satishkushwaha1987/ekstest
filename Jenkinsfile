@@ -16,6 +16,12 @@ pipeline {
                     dockerImage = docker.build dockerimagename
                 }
             }
-        }     
+        }
+        stage('Docker push') {
+            docker.withRegistry('https://registry.hub.docker.com', 'dockerpush') {            
+                app.push("${env.BUILD_NUMBER}")            
+                app.push("latest")        
+              }    
+        }   
     }
 }
