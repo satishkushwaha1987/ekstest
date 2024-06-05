@@ -28,9 +28,12 @@ pipeline {
         //         }
         //     }
         stage('Docker push') {
-            withDockerRegistry([ credentialsId: "dockerpush", url: "https://registry.hub.docker.com" ]) {
-                sh "kushwaha1987/nodeapp:latest"
+            agent any
+                steps{
+                    withDockerRegistry([ credentialsId: "dockerpush", url: "https://registry.hub.docker.com" ]) {
+                        sh "docker push kushwaha1987/nodeapp:latest"
                 }
+            }
             // steps{
             //     script {
             //         docker.withRegistry('https://registry.hub.docker.com', 'dockerpush') {            
