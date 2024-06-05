@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        dockerimagename = "kushwaha1987/nodeapps"
+        dockerimagename = "kushwaha1987/nodeapp"
         dockerImage = "docker"
         APP_NAME = "eksapp"
     }
@@ -26,15 +26,16 @@ pipeline {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
                         dockerImage.push("latest")
+                        sh 'kubectl apply -f deploymentservice.yml'
                     }
                 }
             }
         }
-        stage('Deploying app to k8s') {
-            steps {
-                sh 'kubectl apply -f deploymentservice.yml'
-            }
-        }
+        // stage('Deploying app to k8s') {
+        //     steps {
+        //         sh 'kubectl apply -f deploymentservice.yml'
+        //     }
+        // }
     }
 }    
 
