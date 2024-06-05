@@ -3,6 +3,7 @@ pipeline {
     environment {
         dockerimagename = "thetips4you/nodeapp"
         dockerImage = ""
+        APP_NAME = "eksapp"
     }
     stages {
         stage ('git checkout') {
