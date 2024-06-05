@@ -26,7 +26,6 @@ pipeline {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
                         dockerImage.push("latest")
-                        sh 'kubectl apply -f deploymentservice.yml'
                     }
                 }
             }
