@@ -30,11 +30,11 @@ pipeline {
                 }
             }
         }
-        // stage('Deploying app to k8s') {
-        //     steps {
-        //         sh 'kubectl apply -f deploymentservice.yml'
-        //     }
-        // }
+        stage('Deploying app to k8s') {
+            steps {
+                sh 'kubectl apply -f deploymentservice.yml'
+            }
+        }
     }
 }    
 
