@@ -3,14 +3,16 @@ pipeline {
     environment {
         dockerimagename = "kushwaha1987/nodeapp"
         dockerImage = "docker"
-        APP_NAME = "eksapp"
+    //     APP_NAME = "eksapp"
     }
-    stages {
-        stage ('git checkout') {
-            steps {
-                git 'https://github.com/shazforiot/nodeapp_test.git'
-            }   
-        }
+    // stages {
+    //     stage ('git checkout') {
+    //         steps {
+    //             script{
+	// 		         git branch: 'logs', url: "https://github.com/zestdent/zestmobileoptimization.git"
+	// 		    }
+    //         }   
+    //     }
         stage('Build Image') {
             steps {
                 script {
