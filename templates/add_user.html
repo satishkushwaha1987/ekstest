@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New User</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin-style.css') }}">
+</head>
+<body>
+    <div class="admin-container">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <nav>
+                <a href="{{ url_for('admin.admin_dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            </nav>
+        </header>
+        <main>
+            <h2>Add New User</h2>
+            <form action="{{ url_for('admin.admin_add_user') }}" method="post">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.username.label }}
+                    {{ form.username(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label }}
+                    {{ form.email(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label }}
+                    {{ form.password(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.aws_access_key_id.label }}
+                    {{ form.aws_access_key_id(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.aws_secret_access_key.label }}
+                    {{ form.aws_secret_access_key(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Compunnel</title>
+    <link rel="stylesheet" href="static/style.css">
+    <!-- You can include CSS stylesheets or other resources here -->
+</head>
+<body>
+    <!-- Display the company logo -->
+	 <header>
+		 <img src="{{ url_for('static', filename='company_logo.png') }}" alt="/home/satish/worked/logo.png">
+        <h1>Welcome to Compunnel</h1>
+        <nav>
+            <ul>
+		    <!--  <li><a href="/">Home</a></li> -->
+		    <!-- <li><a href="/about">About</a></li> -->
+                <!-- Add the login link here -->
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+    </main>
+
+    <!-- <img src="{{ url_for('static', filename='company_logo.png') }}" alt="/home/satish/worked/logo.png"> -->
+    
+    <!-- Other content of your web page -->
+    <h1>Please login with your compunnel Email id</h1>
+    <p>This web is for check the logs.</p>
+    <a href="/login">Login</a>
+</body>
+</html>
+
