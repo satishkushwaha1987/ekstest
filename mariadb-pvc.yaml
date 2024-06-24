@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-pvc
+spec:
+  storageClassName: mariadb-pvc  # Adjust as per your storage provisioner
+  accessModes:
+    - ReadWriteOnce  # Adjust as per your access mode requirements
+  resources:
+    requests:
+      storage: 1Gi  # Adjust storage size as per your database size requirements
