@@ -1,12 +1,13 @@
-FROM node:latest
+FROM python3.11
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package.json ./
+COPY requiretments.txt /app/
 
-RUN npm install
+RUN pip install -r requiretments.txt
 
 COPY . .
 
-EXPOSE 4000
-CMD [ "node", "index.js" ]
+EXPOSE 5000
+
+CMD [ "python3", "app.py" ]
