@@ -34,7 +34,9 @@ pipeline {
         }
         stage('Deploying app to k8s') {
             steps {
-                sh 'kubectl apply -f deploymentservice.yml'
+                sh 'kubectl apply -f mariadb-pvc.yaml'
+                sh 'kubectl apply -f mariadb-statefulset.yaml'
+                dh 'kubectl apply -f app-deployment.yaml'
             }
         }
     }
