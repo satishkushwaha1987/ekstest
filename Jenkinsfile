@@ -5,7 +5,7 @@ pipeline {
         dockerImage = "docker"
     //     APP_NAME = "eksapp"
     }
-    // stages {
+    stages {
     //     stage ('git checkout') {
     //         steps {
     //             script{
