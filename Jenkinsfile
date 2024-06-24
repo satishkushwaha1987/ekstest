@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        dockerimagename = "kushwaha1987/nodeapp"
+        dockerimagename = "kushwaha1987/pythonapp"
         dockerImage = "docker"
     //     APP_NAME = "eksapp"
     }
@@ -34,9 +34,9 @@ pipeline {
         }
         stage('Deploying app to k8s') {
             steps {
-                sh 'kubectl apply -f mariadb-pvc.yaml'
-                sh 'kubectl apply -f mariadb-statefulset.yaml'
-                dh 'kubectl apply -f app-deployment.yaml'
+                sh 'kubectl apply -f mariadb-pvc.yaml --validate=false'
+                sh 'kubectl apply -f mariadb-statefulset.yaml --validate=false'
+                sh 'kubectl apply -f app-deployment.yaml --validate=false'
             }
         }
     }
