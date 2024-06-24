@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  web:
+    image: kushwaha1987/pythonapp:latest
+    container_name: flask_app
+    links:
+      - mariadb
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_ENV: development
+      DATABASE_URI: mysql+pymysql://logs:Kushwaha1987@mariadb:3306/logs
+    volumes:
+      - .:/app
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: Skush@1987
+      MYSQL_DATABASE: logs
+      MYSQL_USER: logs
+      MYSQL_PASSWORD: Skush@1987
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:

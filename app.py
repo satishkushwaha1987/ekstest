@@ -11,6 +11,7 @@ from admin import admin_bp
 app = Flask(__name__)
 app.config.from_object(Config)
 
+
 db.init_app(app)
 migrate = Migrate(app, db)
 
@@ -210,10 +211,11 @@ def edit_s3bucket(s3bucket_id):
     return render_template('edit_s3bucket.html', form=form)
 
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
 

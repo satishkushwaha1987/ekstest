@@ -1,51 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-app-deployment
-  labels:
-    app: python-app
+  name: flask-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: python-app
+      app: flask-app
   template:
     metadata:
       labels:
-        app: python-app
+        app: flask-app
     spec:
       containers:
-        - name: python-app
-          image: testlogs:latest
+        - name: flask-app
+          image: kushwaha1987/pythonapp:latest
+          imagePullPolicy: Never
           ports:
-            - containerPort: 5000  # Adjust port as needed
+            - containerPort: 5000
           env:
-            - name: DB_HOST
-              value: mariadb-service  # Name of MariaDB service (DNS resolution)
-            - name: DB_PORT
-              value: "3306"  # MariaDB port
-            - name: DB_NAME
-              value: logs
-            - name: DB_USER
-              value: logs
-            - name: DB_PASSWORD
-              value: Kushwaha1987
-          volumeMounts:
-            - name: app-data
-              mountPath: /app/data  # Example volume mount if needed
-      volumes:
-        - name: app-data
-          emptyDir: {}
+            - name: FLASK_ENV
+              value: development
+            - name: DATABASE_URI
+              value: mysql+pymysql://logs:Kushwaha1987@mariadb-service:3306/logs
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: python-app-service
+  name: flask-app-service
 spec:
   selector:
-    app: python-app
+    app: flask-app
   ports:
     - protocol: TCP
       port: 5000
-      targetPort: 5000  # Match the containerPort in Deployment
-  type: NodePort  # Adjust as per your service type requirements
+      targetPort: 5000
+  type: NodePort
